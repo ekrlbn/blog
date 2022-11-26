@@ -21,16 +21,22 @@ main {
 
 .navbar {
 	flex-wrap: wrap;
-	align-items: space-between;
-	justify-items: center;
-	gap: 1rem;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 3rem;
 }
 
-.navbar-item {
+.newsletter-button {
+	display: flex;
+	justify-content: flex-end;
 	flex-grow: 1;
 }
 
 @media only screen and (max-width: 850px) {
+	.navbar {
+		gap: 10px;
+	}
+
 	.navbar-item {
 		width: 100%;
 	}
@@ -48,6 +54,14 @@ main {
 	main {
 		flex-wrap: wrap-reverse;
 	}
+
+	.newsletter-button {
+		justify-content: center;
+	}
+
+	.newsletter-button button {
+		width: 100%;
+	}
 }
 @media only screen and (min-width: 850px) {
 	#post-section {
@@ -59,6 +73,9 @@ main {
 		width: 45%;
 		min-width: 200px;
 		flex-grow: 1;
+	}
+	.post img {
+		height: 300px;
 	}
 	.sidebar {
 		width: 25%;
@@ -124,4 +141,25 @@ footer {
 	text-align: center;
 	background-color: #f9f9f9d4;
 	border-top: 0.05rem solid #e5e5e5;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+}
+
+.modal {
+	background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.btn-close {
+	font-size: x-large;
+	border: 0;
+	background-color: transparent;
+	color: #727272;
+}
+
+.btn-close:hover {
+	color: #000;
 }

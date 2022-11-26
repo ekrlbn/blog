@@ -1,9 +1,8 @@
-const posts = document.querySelectorAll('.post');
 const searchInput = document.querySelector('.search-input');
 
 searchInput.addEventListener('input', function (e) {
+	const posts = document.querySelectorAll('.post');
 	const value = e.target.value.toLowerCase();
-	console.log(value);
 	posts.forEach(function (post) {
 		const title = post.querySelector('.post-title').textContent.toLowerCase();
 		const body = post.querySelector('.post-body').textContent.toLowerCase();
