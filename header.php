@@ -15,8 +15,6 @@
 			<button id="newsletter" type="button" class="btn btn-primary">
 				Newsletter
 			</button>
-
-		
 		</div>
 	</nav>
 </header>
@@ -25,16 +23,8 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Subscribe Our Newsletter</h5>
-				<button
-					id="close-modal-cross"
-					type="button"
-					class="btn-close"
-					data-bs-dismiss="modal"
-					aria-label="Close"
-				>
-					<strong> &times; </strong>
-				</button>
+				<h5 class="modal-title">Subscribe to the Newsletter</h5>
+				<button id="close-button-modal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<form action="emailForm.php" method="post">
 				<div class="modal-body">
@@ -71,16 +61,19 @@
 	const myModal = document.getElementById('myModal');
 	const newsLetter = document.getElementById('newsletter');
 	const closeModal = document.getElementById('close-modal');
-	const cross = document.getElementById('close-modal-cross');
 
-	newsLetter.onclick = function (params) {
+	newsLetter.onclick = function () {
 		myModal.style.display = 'block';
 	};
 
-	closeModal.onclick = function (params) {
+	closeModal.onclick = function () {
 		myModal.style.display = 'none';
 	};
-	cross.onclick = function (params) {
-		myModal.style.display = 'none';
+
+	window.onclick = function (event) {
+		if (event.target == myModal) {
+			myModal.style.display = 'none';
+		}
 	};
+	
 </script>

@@ -1,17 +1,19 @@
 <?php 
-
 include '../db/index.php';
 
+$sql = "SELECT posts.id, posts.title, posts.content,authors.name as author,posts.date FROM posts,authors WHERE posts.id = ? AND authors.id = posts.author_id";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $_GET['id']);
+$stmt->execute();
+$result = $stmt->get_result();
 
+$stmt->close();
 
+$post = $result->fetch_assoc();
+$visit_count = "UPDATE posts SET visit_count = visit_count + 1 WHERE id = ". $post['id'];
+$conn->query($visit_count);
 
-$post = array_filter($posts, function($post){
-	return ($post['id'] == intval($_GET['id']));
-});
-
-$post = array_values($post)[0];
-
-
+$conn->close();
 ?>
 
 <html lang="en">
@@ -25,7 +27,7 @@ $post = array_values($post)[0];
 			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../style/style.css" />
+		<link rel="stylesheet" href="../style/home.css" />
 		<link rel="stylesheet" href="../style/post.css" />
 		<title>Title</title>
 	</head>
@@ -36,13 +38,7 @@ $post = array_values($post)[0];
 		<main>
 			<div class="post">
 				<div class="post-header">
-					<!-- <div class="post-tags">
-						<?php foreach($post['tags'] as $tag): ?>
-							<span class="tag">
-								<?php echo $tag; ?>
-							</span>
-						<?php endforeach; ?>
-					</div> -->
+					
 					<div class="post-title">
 						<h1><?php echo $post['title']; ?></h1>
 					</div>

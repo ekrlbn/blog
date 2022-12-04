@@ -32,6 +32,12 @@ main {
 	flex-grow: 1;
 }
 
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 @media only screen and (max-width: 850px) {
 	.navbar {
 		gap: 10px;
@@ -47,6 +53,7 @@ main {
 	}
 	.post,
 	.sidebar {
+		min-height: 200px;
 		width: 95%;
 		margin: auto;
 	}
@@ -71,11 +78,11 @@ main {
 
 	.post {
 		width: 45%;
-		min-width: 200px;
 		flex-grow: 1;
 	}
 	.post img {
 		height: 300px;
+		object-fit: cover;
 	}
 	.sidebar {
 		width: 25%;
@@ -87,16 +94,12 @@ main {
 .sidebar div {
 	width: 100%;
 	margin-bottom: 1rem;
+}
+
+.about {
 	padding: 20px;
 }
 
-.search {
-	display: flex;
-}
-
-.search-input {
-	flex-grow: 1;
-}
 #post-section {
 	display: flex;
 	flex-wrap: wrap;
@@ -118,20 +121,15 @@ header {
 	transition: 0.7s;
 	opacity: 0.7;
 }
-.tags {
+
+.category {
 	position: absolute;
-
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.tag {
-	background-color: #fff;
-	opacity: 0.7;
+	background-color: rgba(106, 106, 106, 0.39);
 	color: black;
 	padding: 5px;
 	border-radius: 2px;
-	margin: 10px;
+	padding: 5px;
+	margin: 5px;
 	text-decoration: none;
 }
 
@@ -144,13 +142,14 @@ footer {
 }
 
 .card-body {
+	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: end;
 }
 
 .modal {
-	background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .btn-close {
