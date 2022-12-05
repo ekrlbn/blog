@@ -15,6 +15,7 @@ if(isset($_GET['asc-desc']) && $_GET['asc-desc'] == "ASC") {
 
 $sql = "SELECT * FROM posts WHERE author_id = ". $user['id'] ." ORDER BY ".$order." ".$asc_desc;
 $result = $conn->query($sql);
+$posts = array();
 if($result->num_rows > 0){ 
 	while($row = $result->fetch_assoc()){ 
 		$posts[] = $row; 
