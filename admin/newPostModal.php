@@ -56,7 +56,7 @@
                               <option>none</option>
                               <option value="0">new category</option>
                               <?php foreach($categories as $category): ?>
-                                <option value="<?php echo $category['id'] ?>" <?php if($category['id'] == $post['category_id']) echo 'selected' ?>><?php echo $category['name'] ?></option>
+                                <option value="<?php echo $category['id'] ?>"><?php echo $category['name'] ?></option>
                               <?php endforeach; ?>
                             </select>
 							<div class="new-category" id="new-category">

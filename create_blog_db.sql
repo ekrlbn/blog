@@ -1,9 +1,11 @@
 CREATE TABLE authors(
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
-    username VARCHAR(20) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (name),
+    UNIQUE (username)
 );
 
 CREATE TABLE sessions(
@@ -16,15 +18,16 @@ CREATE TABLE sessions(
 
 CREATE TABLE categories(
     id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(10),
-    PRIMARY KEY (id)
+    name VARCHAR(20),
+    PRIMARY KEY (id),
+    UNIQUE (name)
 );
 
 CREATE TABLE posts(
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
     author_id INT NOT NULL,
-    category_id INT NOT NULL,
+    category_id INT,
     content TEXT NOT NULL,
     image VARCHAR(100),
     date DATE,
@@ -37,7 +40,8 @@ CREATE TABLE posts(
 CREATE TABLE emails(
     id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(50),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (email)
 ); 
 
 INSERT INTO authors (name,username,password)
