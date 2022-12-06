@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
 } 
 
 
-$sql_categories = "SELECT categories.id, categories.name FROM categories INNER JOIN posts ON posts.category_id = categories.id;";
+$sql_categories = "SELECT DISTINCT categories.id, categories.name FROM categories LEFT JOIN posts ON posts.category_id = categories.id;";
 $result_categories = $conn->query($sql_categories);
 $categories = array();
 if ($result_categories->num_rows > 0) {
